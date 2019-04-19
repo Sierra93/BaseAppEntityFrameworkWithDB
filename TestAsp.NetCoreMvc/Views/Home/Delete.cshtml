@@ -1,0 +1,31 @@
+﻿@model TestAsp.NetCoreMvc.Models.Phone
+@{ 
+    ViewBag.Title = "Удаление смартфона";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div>
+        <dl class="dl-horizontal">
+            <dt> Название </dt>
+            <dd> @Html.DisplayFor(model => model.Name) </dd>
+            <dt> Производитель </dt>
+            <dd> @Html.DisplayFor(model => model.Company) </dd>
+            <dt> Цена </dt>
+            <dd> @Html.DisplayFor(model => model.Price) </dd>
+        </dl>
+        <div>
+            <form asp-action="Delete" asp-controller="Home" method="post">
+                <div class="form-group">
+                    <input type="submit" value="Удалить" class="btn btn-default" />
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

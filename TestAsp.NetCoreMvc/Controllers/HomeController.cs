@@ -79,5 +79,28 @@ namespace TestAsp.NetCoreMvc.Controllers {
             }
             return NotFound();
         }
+        [HttpPost]
+        public async Task<IActionResult> Delete(int? id) {
+            Phone phone = await db.Phones.FirstOrDefaultAsync(p => p.Id == id);
+            if (id != null) {
+                db.Phones.Remove(phone);
+                await db.SaveChangesAsync();
+                return View("Index");
+            }
+            return NotFound();
+        }
+        //public async Task<IActionResult> Delete(int? id) {
+        //    //Phone phone = await db.Phones.FirstOrDefaultAsync(p => p.Id == id);
+        //    if (id != null) {
+        //        //db.Phones.Remove(phone);
+        //        //await db.SaveChangesAsync();
+        //        //return View("Index");
+        //        Phone phone = new Phone { Id = id.Value };
+        //        db.Entry(phone).State = EntityState.Deleted;
+        //        await db.SaveChangesAsync();
+        //        return View("Index");
+        //    }
+        //    return NotFound();
+        //}
     }
 }
